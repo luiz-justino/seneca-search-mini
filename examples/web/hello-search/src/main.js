@@ -28,7 +28,10 @@ async function start(opts) {
     .test()
     .use(SearchMem, {
       search: {
+	// fields to be used for each search to be performed
         fields: ['text', 'category'],
+	// fields to be stored in the hits after the performed search
+	// more on this: https://lucaong.github.io/minisearch
         storeFields: ['text', 'category']
       }
 
@@ -76,10 +79,12 @@ async function start(opts) {
   }
 
   async function search_test() {
+    // perform a search by query
     let out = await seneca.post('sys:search,cmd:search', 
       {query: 'drama', params: {},
     })
-    console.log('search out: ', out)
+    // access the hits of the performed search for reuse
+    console.log('search hits: ', out.data.hits)
   }
 
 

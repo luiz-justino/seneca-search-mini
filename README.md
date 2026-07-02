@@ -1,21 +1,20 @@
 ![Seneca](http://senecajs.org/files/assets/seneca-logo.png)
-
-> Run standardisation tests on your [Seneca.js](https://www.npmjs.com/package/seneca) plugin.
+> A [Seneca.js](http://senecajs.org) plugin
 
 # @seneca/search-mini
 
-| ![Voxgig](https://www.voxgig.com/res/img/vgt01r.png) | This open source module is sponsored and supported by [Voxgig](https://www.voxgig.com). |
-| ---------------------------------------------------- | --------------------------------------------------------------------------------------- |
+[![npm version](https://img.shields.io/npm/v/@seneca/search-mini.svg)](https://npmjs.com/package/@seneca/search-mini)
+[![build](https://github.com/senecajs/seneca-search-mini/actions/workflows/build.yml/badge.svg)](https://github.com/senecajs/seneca-search-mini/actions/workflows/build.yml)
+[![Known Vulnerabilities](https://snyk.io/test/github/senecajs/seneca-search-mini/badge.svg)](https://snyk.io/test/github/senecajs/seneca-search-mini)
 
-A Seneca search plugin for local testing based on the Minisearch package
+| ![Voxgig](https://www.voxgig.com/res/img/vgt01r.png) | This open source module is sponsored and supported by [Voxgig](https://www.voxgig.com). |
+|---|---|
 
 ## Install
+
 ```sh
 $ npm install @seneca/search-mini
 ```
-
-
-
 
 ## Quick Example
 
@@ -82,25 +81,36 @@ await seneca.post('sys:search, cmd:remove', { ...doc, })
 // This is especially useful when you need to update the doc
 // and make it present next time you apply 'sys:search, cmd:search'
 
+let doc = docs[1]
 doc.text = "new text ..."
 await seneca.post('sys:search, cmd:remove', { ...doc, })
 await seneca.post('sys:search, cmd:add', { doc, })
 
 ```
 
-
-
 ## More Examples
+
+See [test/](test/) for more usage examples.
 
 ## Motivation
 
+A [Seneca.js](http://senecajs.org) plugin.
+
 ## Support
 
-Check out our sponsors and supporters, Voxgig, on their website [here](https://www.voxgig.com).
+If you're using this module and need help, you can:
+
+- Post a [github issue](https://github.com/senecajs/seneca-search-mini/issues)
+- Tweet to [@senecajs](http://twitter.com/senecajs)
+- Ask on the [Gitter](https://gitter.im/senecajs/seneca)
 
 ## API
 
+See [source](https://github.com/senecajs/seneca-search-mini) for API details.
+
 ## Contributing
+
+The [Senecajs org](https://github.com/senecajs/) encourages open participation. If you feel you can help in any way, be it with documentation, examples, extra testing, or new features please get in touch.
 
 The [SenecaJS org](http://senecajs.org/) encourages participation. If you feel you can help in any way, be
 it with bug reporting, documentation, examples, extra testing, or new features, feel free

@@ -154,6 +154,37 @@ function search_mem(options) {
 
     return reply(null, { ok: true })
   })
+  
+  seneca.add('sys:search,cmd:add_all', function (msg, reply) {
+    if (null == msg.docs) {
+      return {
+        ok: false,
+        why: 'invalid-docs-argument',
+        details: {
+          path: ['docs'],
+          why_exactly: 'required'
+        }
+      }
+    }
+
+    const { docs } = msg
+    
+    for(let doc of docs) {
+    
+      if (ids_to_docs.has(doc.id)) {
+        return reply(new Error('A document with the id already exists'))
+      }
+      try {
+        minisearch.add(doc)
+        ids_to_docs.set(doc.id, doc)
+      }catch(err) {
+        return reply(err)
+      }
+    }
+
+
+    return reply(null, { ok: true })
+  })
 
 
   return

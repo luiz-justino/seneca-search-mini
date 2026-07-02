@@ -21,9 +21,11 @@ export default {
     async changeInput(input) {
       let results = document.querySelector('#results')
       let query = input.target.value
+      // perform a search
       let out = await this.$main.seneca.post('sys:search,cmd:search', 
         {query, params: {prefix: true, fuzzy: 0.2,}
       })
+      // access the hits of the performed search for reuse
       let hits = out.data.hits
 
       for(let child of Array.from(results.children)) {
